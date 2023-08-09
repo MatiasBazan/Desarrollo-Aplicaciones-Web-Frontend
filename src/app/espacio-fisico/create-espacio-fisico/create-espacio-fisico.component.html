@@ -1,0 +1,48 @@
+<div class="container">
+  <h2 class="titulo">Crear Espacio Físico</h2>
+  
+  <form class="form-container my-form">
+    <mat-form-field class="mt-4">
+        <mat-label for="nombre">Nombre:</mat-label>
+        <input matInput type="text" name="nombre" [(ngModel)]="nuevoEspacio.nombre" required [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="mt-4">
+        <mat-label for="descripcion">Descripción:</mat-label>
+        <textarea matInput name="descripcion" [(ngModel)]="nuevoEspacio.descripcion" [ngModelOptions]="{standalone: true}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="mt-4">
+        <mat-label for="capacidad">Capacidad:</mat-label>
+        <input matInput type="number" name="capacidad" min="0" [(ngModel)]="nuevoEspacio.capacidad" required [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="mt-4">
+        <mat-label>Recursos tecnológicos</mat-label>
+        <mat-select name="recursos" [(ngModel)]="nuevoEspacio.recursos" multiple [compareWith]="compare" [ngModelOptions]="{standalone: true}">
+            <mat-option *ngFor="let recurso of recursos" [value]="recurso">{{ recurso.nombre }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="form-buttons">
+        <button mat-raised-button type="submit" color="primary" (click)="crearEspacio()">Crear Espacio</button>
+        <button mat-raised-button type="button" color="warn" style="margin-left:5px" (click)="goBack()">Volver</button>
+    </div>
+</form>
+
+  <!-- Mensaje de éxito -->
+  <div *ngIf="mostrarExito" class="alert alert-success my-alert" role="alert">
+    {{ mensajeExito }}
+  </div>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="mostrarError" class="alert alert-danger my-alert" role="alert">
+    {{ mensajeError }}
+  </div>
+</div>
+
+
+
+
+
+  

@@ -1,0 +1,37 @@
+<div class="container">
+<h2 class="titulo">Editar Espacio Físico</h2>
+
+<form (submit)="guardarCambios()" class="form-container">
+  <mat-form-field class="mt-4">
+    <mat-label for="nombre">Nombre:</mat-label>
+    <input matInput type="text" [(ngModel)]="espacioFisicoEditado.nombre" required [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="mt-4">
+    <mat-label for="descripcion">Descripción:</mat-label>
+    <textarea matInput [(ngModel)]="espacioFisicoEditado.descripcion" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="mt-4">
+    <mat-label for="capacidad">Capacidad:</mat-label>
+    <input matInput type="number" min="0" [(ngModel)]="espacioFisicoEditado.capacidad" required [ngModelOptions]="{standalone: true}"> 
+  </mat-form-field>
+
+  <mat-form-field class="mt-4">
+    <mat-label>Recursos tecnológicos</mat-label>
+    <mat-select  [(ngModel)]="espacioFisicoEditado.recursos" multiple [compareWith]="compare" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let recurso of recursos" [value]="recurso">{{ recurso.nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="form-buttons">
+    <button mat-raised-button type="submit" color="primary">Guardar Cambios</button>
+    <button mat-raised-button type="button" color="warn" style="margin-left:5px" (click)="cancelarEdicion()">Cancelar</button>
+  </div>
+</form>
+
+
+
+
+
+

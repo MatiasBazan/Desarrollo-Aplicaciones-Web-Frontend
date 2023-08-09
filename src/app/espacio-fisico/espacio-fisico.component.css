@@ -1,0 +1,128 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; /* Cambia al tema que estés usando */
+
+/* Estilos personalizados para el navegador */
+.header {
+  background-color: #c0c3c4;
+  color: rgb(230, 230, 230);
+ 
+}
+
+
+
+
+/* Agrega esto a tu archivo de estilos CSS (por ejemplo, styles.css) */
+
+.toolbar-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.fill-space {
+  flex: 1;
+}
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+}
+
+.logo-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 150px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+
+/* Estilos del contenedor de filtros */
+.filtro-container {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.filtro-item {
+  margin-right: 14px;
+}
+
+.filtro-button {
+  margin-top: 0px;
+  font-size: 16px; /* Aumentar el tamaño de fuente */
+  padding: 14px 20px; /* Ajustar el padding para hacer el botón más grande */
+}
+
+
+ 
+
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-custom th,
+.table-custom td {
+  padding: 12px;
+  text-align: left;
+}
+
+.table-custom th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  color: #333;
+}
+
+.table-custom td {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.acciones-header {
+  text-align: center;
+}
+
+.acciones-container button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.acciones-container button:hover {
+  background-color: #ddd;
+}
+
+.acciones-container button:active {
+  background-color: #ccc;
+}
+
+/* Estilo personalizado para el botón verde */
+.green-button {
+  background-color: rgb(214, 214, 214);
+  color: white; /* Cambia el color del texto para que sea legible en el fondo verde */
+}
+
+
+
+
+
+
+
+
+
+
+
