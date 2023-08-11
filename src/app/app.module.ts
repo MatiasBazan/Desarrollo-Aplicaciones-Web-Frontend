@@ -19,11 +19,18 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatSortModule} from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ReservasComponent } from './reservas/reservas.component';
+import { ReservasService } from './reservas.service';
+import { CreateReservaComponent } from './reservas/create-reserva/create-reserva.component';
+import { EditarReservasComponent } from './reservas/editar-reserva/editar-reserva.component';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +38,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     PaginationComponent,
     CreateEspacioFisicoComponent,
     EditarEspacioFisicoComponent,
+    ReservasComponent,
+    CreateReservaComponent,
+    EditarReservasComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,12 +58,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatInputModule,
     MatToolbarModule,
     FlexLayoutModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [
   ],
   providers: [
     UsuarioServiceService,
+    ReservasService
   ],
   bootstrap: [AppComponent]
 })

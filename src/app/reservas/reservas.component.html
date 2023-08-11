@@ -1,0 +1,124 @@
+
+    <header class="header">
+
+    <mat-toolbar color="primary" class="toolbar-left">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>{{ isSidenavOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+      <a mat-button routerLink="/espacios">Espacio Físico</a>
+      <a mat-button routerLink="/reservas">Reserva</a>
+      <span class="fill-space"></span>
+      
+  
+      <div class="fill-space"></div> <!-- Esto empujará el logo a la derecha -->
+      
+      <div class="logo-container">
+        <a href='https://postimg.cc/5HHb29Dn' target='_blank'>
+          <img src='https://i.postimg.cc/5HHb29Dn/logoUTN.png' alt='logoUTN' class="logo-img">
+        </a>
+      </div>
+    </mat-toolbar>
+    
+    
+  
+    
+    
+  </header>
+  
+  
+  <div style="margin-top: 40px;"></div> 
+  
+  <div class="page-content">
+  <!-- boton crear -->
+  <div class="button-container">
+    <button mat-raised-button color="primary" class="green-button" routerLink="new">
+      <mat-icon style="color: white;">add</mat-icon> 
+      Crear Nueva Reserva
+    </button>
+  </div>
+  
+  <div style="margin-top: 20px;"></div> 
+  
+  <!-- Filtro -->
+  
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Filtrar por solicitante" [(ngModel)]="nombreFiltro">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="obtenerDatos()">Aplicar Filtro</button>
+  </div>
+  
+  
+
+<!-- Filtro 
+  <div class="filtro-container mat-elevation-z2" fxLayout="row" fxLayoutAlign="start center">
+    <div class="filtro-item">
+      <mat-form-field appearance="fill">
+        <mat-label>Solicitante</mat-label>
+        <input matInput [(ngModel)]="nombreFiltro" />
+      </mat-form-field>
+    </div>
+    <div class="filtro-item">
+    </div>
+    <button mat-raised-button color="primary" class="filtro-button" (click)="obtenerDatos()">
+      Filtrar
+    </button>
+  </div> -->
+  
+  
+  
+  
+  
+  <div class="table-container">
+  
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" 
+    matSort
+    matSortActive="nombre"
+    matSortDisableClear
+    matSortDirection="asc"
+    (matSortChange)="obtenerDatos()">
+
+
+    <ng-container matColumnDef="espacioFisico">
+      <th mat-header-cell *matHeaderCellDef> <span style="font-weight: bold;">Espacio Fisico</span> </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.espacioFisico.nombre }}
+      </td>
+    </ng-container>
+    
+      <ng-container matColumnDef="solicitante">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> <span style="font-weight: bold;">Solicitante</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.solicitante.nombre +" "+element.solicitante.apellido}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaInicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight: bold;">Fecha Inicio</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaInicio | date: 'dd/MM/yy' }} {{ element.fechaInicio | date: 'hh:mm a' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaFin">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <span style="font-weight: bold;">Fecha Fin</span> </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaFin | date: 'dd/MM/yy' }} {{ element.fechaFin | date: 'hh:mm a' }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> <span style="font-weight: bold;">Acciones</span> </th>
+        <td mat-cell *matCellDef="let element">
+            <!-- Agrega los botones de edición y eliminación -->
+            <button mat-icon-button color="secondary" [routerLink]="['edit', element.id]" title="Editar">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminarReservas(element.id)" title="Borrar">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+    </table>
+
+    <mat-paginator [length]="datos.length" [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+  
+  </div>

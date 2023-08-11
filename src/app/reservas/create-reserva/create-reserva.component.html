@@ -1,0 +1,54 @@
+
+<div class="container mt-4" style="margin-top: -20px;">
+
+      <form [formGroup]="reservaForm" (ngSubmit)="submitForm()" fxLayout="column" fxLayoutAlign="start">
+
+          <!-- Columna Solicitante -->
+            <mat-form-field class="ancho">
+              <mat-label>Solicitante</mat-label>
+              <mat-select formControlName="solicitante" [compareWith]="compareElements">
+                <mat-option *ngFor="let solicitante of solicitantes" [value]="solicitante">{{ solicitante.nombre + " " + solicitante.apellido}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="ancho">
+            <input matInput [ngxMatDatetimePicker]="pickerFechaInicio" placeholder="Fecha y hora Inicio"
+            formControlName="fechaInicio" 
+            [min]="minDate" >
+            <mat-datepicker-toggle matSuffix [for]="$any(pickerFechaInicio)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #pickerFechaInicio [showSpinners]="true" [showSeconds]="false"
+                                      [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+                                      [touchUi]="false" [enableMeridian]="false"
+                                      [disableMinute]="false" [hideTime]="false">
+            </ngx-mat-datetime-picker>
+          </mat-form-field> 
+
+            <mat-form-field class="ancho">
+            <input matInput [ngxMatDatetimePicker]="pickerFechaFin" placeholder="Fecha y hora Fin"
+            formControlName="fechaFin" 
+            [min]="reservaForm.get('fechaInicio')?.value"  >
+            <mat-datepicker-toggle matSuffix [for]="$any(pickerFechaFin)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #pickerFechaFin [showSpinners]="true" [showSeconds]="false"
+                                      [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+                                      [touchUi]="false" [enableMeridian]="false"
+                                      [disableMinute]="false" [hideTime]="false">
+            </ngx-mat-datetime-picker>
+            </mat-form-field>
+          <!-- Columna Espacio -->
+            <mat-form-field class="ancho">
+              <mat-label>Espacio</mat-label>
+              <mat-select formControlName="espacioFisico" [compareWith]="compareElements">
+                <mat-option *ngFor="let espacio of espaciosFisicos" [value]="espacio">{{espacio.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          <!-- Columna Botones -->
+          <button type="submit" mat-raised-button color="primary">Crear</button>
+
+          <br> <!-- Agregar un salto de línea para separar los botones -->
+          
+          <button mat-raised-button style="margin-right: 20px; background-color: red; color: white; width: 100%;" routerLink="/reservas">Volver</button>
+          
+          
+      </form>
+  </div>

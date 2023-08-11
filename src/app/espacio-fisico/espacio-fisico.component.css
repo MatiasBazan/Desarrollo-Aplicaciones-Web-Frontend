@@ -1,4 +1,3 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'; /* Cambia al tema que estés usando */
 
 /* Estilos personalizados para el navegador */
 .header {
@@ -6,7 +5,6 @@
   color: rgb(230, 230, 230);
  
 }
-
 
 
 
@@ -109,13 +107,6 @@
 .acciones-container button:active {
   background-color: #ccc;
 }
-
-/* Estilo personalizado para el botón verde */
-.green-button {
-  background-color: rgb(214, 214, 214);
-  color: white; /* Cambia el color del texto para que sea legible en el fondo verde */
-}
-
 
 
 
