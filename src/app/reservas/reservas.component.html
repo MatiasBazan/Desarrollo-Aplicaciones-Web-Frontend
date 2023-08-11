@@ -41,11 +41,18 @@
   
   <!-- Filtro -->
   
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="Filtrar por solicitante" [(ngModel)]="nombreFiltro">
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="obtenerDatos()">Aplicar Filtro</button>
+  <div class="filtro-container mat-elevation-z2" fxLayout="row" fxLayoutAlign="start center">
+    <div class="filtro-item">
+      <mat-form-field appearance="fill">
+        <mat-label>Solicitante</mat-label>
+        <input matInput [(ngModel)]="nombreFiltro" />
+      </mat-form-field>
+    </div>
+    <div class="filtro-item">
+      <button mat-raised-button color="primary" class="filtro-button" (click)="obtenerDatos()">
+        Filtrar
+      </button>
+    </div>
   </div>
   
   
